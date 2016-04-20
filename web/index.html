@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="Assets/css/layout.css">
 	<link rel="stylesheet" href="Assets/css/app.css">
 </head>
-<body ng-cloak >
+<body ng-cloak ng-controller="MainController">
     <header>
         <nav class="navbar  navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
@@ -22,6 +22,12 @@
                     <ul class="nav navbar-nav">
                         <li ui-sref-active="active"><a ui-sref="services">服 务</a></li>
                         <li ui-sref-active="active"><a href="#">节 点</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">数据中心 <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="dc in dataCenters"><a href="#">{{dc}}</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

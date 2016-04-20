@@ -20,6 +20,7 @@ require.config({
         common: "../Assets/js/common",
         
         //controller
+        MainController:"controllers/MainController",
         servicesController:"controllers/ServicesController"
     },
     shim: {
@@ -46,7 +47,8 @@ require([
     "bootstrap",
     "common",
     "consulApp",
-    "servicesController",
+    "MainController",
+    "servicesController"
 ], function (jquery, angular) {
     jquery(function () {
         angular.bootstrap(document, ["consulApp"]);

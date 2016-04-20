@@ -1,6 +1,7 @@
-define(['consulApp'],
-
- function(consulApp){
+define([
+    'consulApp'
+    
+    ],function(consulApp){
       
     consulApp.controller('ServicesController', function ($scope,$rootScope,$http) {
             $rootScope.headTitle= "服务列表";
