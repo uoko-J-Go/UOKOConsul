@@ -22,7 +22,7 @@ define([
         });
     
      $stateProvider.state('services', {
-            url:'/',
+            url:'/services',
             templateUrl: 'App/views/service/list.html',
             controller:"ServicesController"
         });
