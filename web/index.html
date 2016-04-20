@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN" >
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{{headTitle}}</title>
+	<link rel="stylesheet" href="Assets/plugins/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="Assets/css/layout.css">
+	<link rel="stylesheet" href="Assets/css/app.css">
+</head>
+<body ng-cloak >
+    <header>
+        <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="home">UOKOConsul</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active"><a ui-sref="services">服 务</a></li>
+                <li ui-sref-active="active"><a href="#">节 点</a></li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+    <section>
+     <div class="container" ui-view></div> 
+    </section>
+   <footer>
+       
+   </footer>
+	<script data-main="App/main" src="Assets/plugins/requirejs/require.js"></script>
+</body>
+</html>
