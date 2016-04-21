@@ -35,7 +35,7 @@ define([
      app.factory('apiBaseAddressHandler', function () {
         return {
             request: function (config) {
-                if (config.url.indexOf("v1/") >= 0) {
+                if (!/https?:\/\/(.*?)+/.test(config.url)&&config.url.indexOf("v1/") >= 0) {
                     config.url = apiUrl + config.url;
                 }
                 return config;
