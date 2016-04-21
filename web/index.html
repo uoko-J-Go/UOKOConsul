@@ -23,9 +23,9 @@
                         <li ui-sref-active="active"><a ui-sref="services">服 务</a></li>
                         <li ui-sref-active="active"><a href="#">节 点</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">数据中心 <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{currDataCenter}} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li ng-repeat="dc in dataCenters"><a href="#">{{dc}}</a></li>
+                                <li ng-repeat="dc in dataCenters"><a href="javascript:;" ng-click="ChangeDC(dc)">{{dc}}</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -36,9 +36,9 @@
     <section>
      <div class="container theme-showcase" role="main" ui-view></div> 
     </section>
-   <footer class="footer navbar-fixed-bottom ">
-       <div class="container">
-           <p align="center" style="margin-top: 20px;color:#878B91;">
+   <footer >
+       <div class="container footer">
+           <p align="center"  style="margin-top:10px;color:#878B91;">
             Copyright &copy;2016 J-Go
             </p>
         </div>

@@ -7,8 +7,12 @@ function(consulApp){
     consulApp.controller('MainController', function ($scope,$rootScope,$http) {
            
             $scope.dataCenters=["DC01","DC02"]
-
-
+            $scope.currDataCenter=$scope.dataCenters[0];
+            $scope.ChangeDC=function name(dc) {
+                $scope.currDataCenter=dc;
+            }
+            
+            
     })
 
 })
