@@ -4,6 +4,7 @@ define([
     'services/serviceservice'
     ],function(consulApp){
       
+
  consulApp.controller('ServicesController', function ($scope,$rootScope,$http,ServicesService) {
             $rootScope.headTitle= "服务列表";
             $scope.services=[]
@@ -21,6 +22,5 @@ define([
                 }); 
            };
            
-    })
-
-})
+         })
+    });
