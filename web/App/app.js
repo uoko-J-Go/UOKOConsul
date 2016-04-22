@@ -36,7 +36,7 @@ define([
         return {
             request: function (config) {
                 if (!/https?:\/\/(.*?)+/.test(config.url)&&config.url.indexOf("v1/") >= 0) {
-                    config.url = apiUrl + config.url;
+                    config.url = apiBaseAddress + config.url;
                 }
                 return config;
             }

@@ -21,7 +21,9 @@ require.config({
         
         //controller
         MainController:"controllers/MainController",
-        servicesController:"controllers/ServicesController"
+        servicesController:"controllers/ServicesController",
+        
+       
     },
     shim: {
         "angular": { deps: ["jquery"], exports: "angular" },
@@ -48,7 +50,7 @@ require([
     "common",
     "consulApp",
     "MainController",
-    "servicesController"
+    "servicesController",
 ], function (jquery, angular) {
     jquery(function () {
         angular.bootstrap(document, ["consulApp"]);
