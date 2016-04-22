@@ -37,7 +37,7 @@ require.config({
     priority: [
         "angular", "jquery"
     ],
-    urlArgs: "v=" + (new Date()).getTime()
+    //urlArgs: "v=" + (new Date()).getTime()  开发阶段不使用  方便调试
 });
 
 
