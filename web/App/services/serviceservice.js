@@ -6,7 +6,19 @@ define([
       
     consulApp.service("ServicesService", function ($http) {
         this.Create = function (model, successCallBack, failedCallBack) {
-            $http.put("/v1/agent/service/register", {"ID": "test","Name": "redis2","Address": "127.0.0.1","Port": 8000, "Check": {}}).success(function (data) {
+            $http.post("/v1/agent/service/register", JSON.stringify(model)).success(function (data) {
+                if (successCallBack != undefined) {
+                    successCallBack(data);
+                }
+            }).error(function (data) {
+                if (failedCallBack != undefined) {
+                    failedCallBack(data);
+                }
+            });
+        };
+        
+        this.Delete = function (id, successCallBack, failedCallBack) {
+            $http.delete("v1/agent/service/deregister/"+id+"").success(function (data) {
                 if (successCallBack != undefined) {
                     successCallBack(data);
                 }

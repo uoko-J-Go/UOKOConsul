@@ -1,6 +1,72 @@
 
 <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">服务注册</button>
 
+
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">服务列表</div>
+  <div class="panel-body">
+  </div>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default" ng-repeat="item in items">
+     <div id="myAlert" class="alert alert-primary">
+         <a  class="close"  ng-click="delServices(item.ID)">&times;</a>
+         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Service}}" aria-expanded="true" aria-controls="{{item.Service}}">
+          {{item.Service}}
+        </a>
+      </div>
+    
+    <div id="{{item.Service}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+          <div class="form-group">
+            <label for="exampleInputPassword1">ID</label>
+            <input disabled type="text" class="form-control" id="exampleInputPassword1" value="{{item.ID}}">
+          </div>
+          
+          <div class="form-group">
+            <label for="exampleInputPassword1">Service</label>
+            <input disabled type="text" class="form-control" id="exampleInputPassword1" value="{{item.ServiceID}}">
+          </div>
+          
+          <div class="form-group">
+              <label for="exampleInputPassword1">Tags</label>
+              <input disabled type="number" class="form-control" id="exampleInputPassword1" value="{{item.Tags}}">
+          </div>   
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Address</label>
+              <input disabled type="text" class="form-control" id="exampleInputEmail1" value="{{item.Address}}">
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleInputEmail1">Port</label>
+              <input disabled type="text" class="form-control" id="exampleInputEmail1" value="{{item.Port}}">
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleInputPassword1">EnableTagOverride</label>
+              <input disabled type="text" class="form-control" id="exampleInputPassword1" value="{{item.EnableTagOverride}}">
+            </div>
+            
+             <div class="form-group">
+              <label for="exampleInputPassword1">CreateIndex</label>
+              <input disabled type="text" class="form-control" id="exampleInputPassword1" value="{{item.CreateIndex}}">
+            </div>
+            
+              
+             <div class="form-group">
+              <label for="exampleInputPassword1">ModifyIndex</label>
+              <input disabled type="text" class="form-control" id="exampleInputPassword1" value="{{item.ModifyIndex}}">
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--Form-->
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content" >
@@ -16,7 +82,7 @@
           
           <div class="form-group">
               <label for="exampleInputPassword1">Port</label>
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Port" ng-model="model.Port">
+              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Port" ng-model="model.Port">
           </div>   
 
             <div class="form-group">
