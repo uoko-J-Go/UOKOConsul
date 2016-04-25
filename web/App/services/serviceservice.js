@@ -18,7 +18,7 @@ define([
         };
         
         this.Delete = function (id, successCallBack, failedCallBack) {
-            $http.delete("v1/agent/service/deregister/"+id+"").success(function (data) {
+            $http.post("/v1/agent/service/deregister/"+id+"").success(function (data) {
                 if (successCallBack != undefined) {
                     successCallBack(data);
                 }
