@@ -1,34 +1,49 @@
 
-<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">服务注册</button>
-
-
-
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">服务列表</div>
+  <div class="panel-heading">节点列表</div>
   <div class="panel-body">
   </div>
   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default" ng-repeat="item in items">
-     <div id="myAlert" class="alert alert-primary" ng-class="item.ChecksCritical>0? 'alert alert-danger':'alert alert-primary'">
-         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Name}}" aria-expanded="true" aria-controls="{{item.Name}}" ng-click="getHealthService(item.Name)">
-        {{item.Name}}
+     <div id="myAlert" class="alert alert-primary" >
+         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Node}}" aria-expanded="true" aria-controls="{{item.Node}}" ng-click="getHealthNode(item.Node)">
+        {{item.Node}}
         </a>
       </div>
     
-    <div id="{{item.Name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div id="{{item.Node}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-         <div class="row">
-            <div class="panel panel-default" ng-repeat="server in healthService">
-              <div class="panel-heading">{{server.Service.ID}}</div>
-              <div class="panel-body">
-                 <div class="col-md-4"><label for="exampleInputName2">Node : </label><span>{{server.Node.Node}}</span></div>
-                 <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Node.Address}}</span></div>
-                 <div class="col-md-4"><label for="exampleInputName2">Tags : </label><span>{{server.Service.Tags}}</span></div>
-                 <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Service.Address}}</span></div>
-                 <div class="col-md-4"><label for="exampleInputName2">Port : </label><span>{{server.Service.Port}}</span></div>
-              </div>
-          </div>
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#services" aria-controls="services" role="tab" data-toggle="tab">Services</a></li>
+                <li role="presentation"><a href="#checks" aria-controls="checks" role="tab" data-toggle="tab">Checks</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="services" >
+                     <div class="alert alert-success" role="alert" ng-repeat="services in item.Services">
+                         {{services.Service}} <br>
+                        <p class="text-warning">{{services.Tags}}</p>
+                         
+                     </div>
+                </div>
+                
+                <div role="tabpanel" class="tab-pane" id="checks">
+                     <div class="alert alert-warning" role="alert" ng-repeat="checks in item.Checks">
+                          <div class="panel-body">
+                            <div class="col-md-8">
+                                <label for="exampleInputName2"><label class="text-warning"><h3>{{checks.Name}}</h3></label></label>
+                                <small>{{checks.CheckID}}</small>
+                            </div>
+                            <div class="col-md-8"><label for="exampleInputName2">Notes : </label><p class="text-warning">{{checks.Notes}}</p></div>
+                            <div class="col-md-8"><label for="exampleInputName2">Output : </label><p class="text-warning">{{checks.Output}}</p></div>
+                     </div>
+                   </div>
+                </div>
+            </div>
         </div>
       </div>
     </div>
@@ -36,54 +51,4 @@
 </div>
 </div>
 
-<!--Form-->
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" >
-         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">服务注册</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="exampleInputPassword1">ID</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ID" ng-model="model.ID">
-          </div>
-          
-          <div class="form-group">
-            <label for="exampleInputPassword1">Name</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Name" ng-model="model.Name">
-          </div>
-          
-          <div class="form-group">
-              <label for="exampleInputPassword1">Port</label>
-              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Port" ng-model="model.Port">
-          </div>   
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Address</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Address" ng-model="model.Address">
-            </div>
-            
-            <div class="form-group">
-              <label for="exampleInputEmail1">Tags</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tags" ng-model="model.Tags">
-            </div>
-            
-            <div class="form-group">
-              <label for="exampleInputPassword1">Check</label>
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Check" ng-model="model.Check">
-            </div>
-            
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          <button type="button" class="btn btn-primary" ng-click="SubmitFrom(model)">注册</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- From end-->
