@@ -10,3 +10,6 @@ footer{
         background:#222;
         clear:both;
     }
+ul{
+  list-style:none;
+  }
