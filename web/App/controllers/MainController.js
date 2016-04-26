@@ -1,14 +1,11 @@
 define([
-    'consulApp'
-
+    'consulApp',
+    'layer'
 ],
 function(consulApp){
      //处理单页 主页面相关 
     consulApp.controller('MainController', function ($scope,$rootScope,$http,$state,$stateParams) {
-           
-            $rootScope.dataCenters=["dc01","dc02"]
-            $scope.currDataCenter=$rootScope.dataCenters[0];
-            $scope.ChangeDC=function name(dc) {
+            $scope.ChangeDC=function(dc) {
                 $scope.currDataCenter=dc;
                 $state.go("services",{dc:dc},{inherit:false});
            
@@ -18,8 +15,17 @@ function(consulApp){
                 //     var aa=data;
                 // });
             }
+           
+            $scope.Init=function() {
+                $http.get("/v1/catalog/datacenters").success(function (data) {
+                    $rootScope.dataCenters=data;
+                    $scope.currDataCenter=$rootScope.dataCenters[0];
+                }).error(function (data) {
+                   layer.msg(data)
+                });
+            }
             
-            
+            $scope.Init();
     })
 
 })

@@ -11,7 +11,7 @@ require.config({
 
         //plugin
         jquery: "../Assets/plugins/jquery/jquery-1.12.3.min",
-        underscore:"../Assets/plugins/underscore/jquery-1.12.3.min",
+        underscore:"../Assets/plugins/underscore/underscore-min",
         bootstrap: "../Assets/plugins/bootstrap/js/bootstrap.min",
         layer: "../Assets/plugins/layer/layer",
 
@@ -21,7 +21,7 @@ require.config({
         
         //controller
         MainController:"controllers/MainController",
-        servicesController:"controllers/ServicesController",
+        ServicesController:"controllers/ServicesController",
         
        
     },
@@ -47,10 +47,11 @@ require([
     "jquery",
     "angular",
     "bootstrap",
+    "underscore",
     "common",
     "consulApp",
     "MainController",
-    "servicesController",
+    "ServicesController",
 ], function (jquery, angular) {
     jquery(function () {
         angular.bootstrap(document, ["consulApp"]);

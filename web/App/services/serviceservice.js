@@ -5,6 +5,8 @@ define([
     ],function(consulApp){
       
     consulApp.service("ServicesService", function ($http) {
+        
+        
         this.Create = function (model, successCallBack, failedCallBack) {
             $http.post("/v1/agent/service/register", JSON.stringify(model)).success(function (data) {
                 if (successCallBack != undefined) {
