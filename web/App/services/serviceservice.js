@@ -29,8 +29,20 @@ define([
             });
         };
         
-        this.GetAll = function (successCallBack, failedCallBack) {
-            $http.get("/v1/agent/services").success(function (data) {
+        this.GetAll = function (dc,successCallBack, failedCallBack) {
+            $http.get("/v1/internal/ui/services?dc="+dc+"").success(function (data) {
+                if (successCallBack != undefined) {
+                    successCallBack(data);
+                }
+            }).error(function (data) {
+                if (failedCallBack != undefined) {
+                    failedCallBack(data);
+                }
+            });
+        };
+        
+        this.GetInfoByName = function (dc,name,successCallBack, failedCallBack) {
+            $http.get("/v1/health/service/"+name+"?dc="+dc+"").success(function (data) {
                 if (successCallBack != undefined) {
                     successCallBack(data);
                 }

@@ -5,7 +5,7 @@ define([
     ],function(consulApp){
       
 
- consulApp.controller('ServicesController', function ($scope,$rootScope,$http,ServicesService) {
+ consulApp.controller('ServicesController', function ($scope,$rootScope,$http,$state,$stateParams,ServicesService) {
             $rootScope.headTitle= "服务列表";
             $scope.services=[]
             $scope.SubmitFrom = function (model) {
@@ -15,12 +15,25 @@ define([
            };
            
            $scope.GetAll = function () {
-                ServicesService.GetAll(function (data) {
+                ServicesService.GetAll($scope.currDataCenter,function (data) {
+
                      $scope.items=data
                 }); 
            };
            
+           $scope.getHealthService=function(name){
+              ServicesService.GetInfoByName($scope.currDataCenter,name,function (data) {
+                     $scope.healthService=data;
+                }); 
+           }
+           
            $scope.init=function(){
+               if($stateParams["dc"]==""){
+                   $scope.currDataCenter=$rootScope.dataCenters[0];
+               }
+               else{
+                    $scope.currDataCenter=$stateParams["dc"];
+               }
                $scope.GetAll();
            }
            $scope.init();
