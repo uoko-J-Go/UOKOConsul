@@ -1,39 +1,65 @@
 
-<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">服务注册</button>
 
 
+<div class="toolbar row" style="padding:10px 15px">
+  <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">服务注册</button>
+</div>
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">服务列表</div>
-  <div class="panel-body">
+  <div class="panel-heading">
+   服务列表
   </div>
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default" ng-repeat="item in items">
-     <div id="myAlert" class="alert alert-primary" ng-class="item.ChecksCritical>0? 'alert alert-danger':'alert alert-primary'">
-         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Name}}" aria-expanded="true" aria-controls="{{item.Name}}" ng-click="getHealthService(item.Name)">
-        {{item.Name}}
-        </a>
-      </div>
-    
-    <div id="{{item.Name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-         <div class="row">
-            <div class="panel panel-default" ng-repeat="server in healthService">
-              <div class="panel-heading">{{server.Service.ID}}</div>
-              <div class="panel-body">
-                 <div class="col-md-4"><label for="exampleInputName2">Node : </label><span>{{server.Node.Node}}</span></div>
-                 <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Node.Address}}</span></div>
-                 <div class="col-md-4"><label for="exampleInputName2">Tags : </label><span>{{server.Service.Tags}}</span></div>
-                 <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Service.Address}}</span></div>
-                 <div class="col-md-4"><label for="exampleInputName2">Port : </label><span>{{server.Service.Port}}</span></div>
-              </div>
+  <div class="panel-body">
+    <div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default"  ng-repeat="item in items">
+      <div  class="panel-heading" >
+        <h4>
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Name}}" aria-expanded="true" aria-controls="{{item.Name}}" ng-click="getHealthService(item.Name)">
+            {{item.Name}}
+            </a>
+            <span ng-class="item.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'"  ng-bind="item.ChecksCritical>0? item.ChecksCritical +' failing':item.ChecksPassing+' passing'"></span>
+        </h4>
+        </div>
+      
+      <div id="{{item.Name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <div class="panel-group">
+              <div class="panel panel-default" ng-repeat="server in healthService">
+                <div class="panel-heading">
+                  <h4>
+                  {{server.Service.ID}}
+                  <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'"  ng-bind="server.ChecksCritical>0? server.ChecksCritical +' failing':server.ChecksPassing+' passing'"></span>
+                  <h4>
+                </div>
+                <div class="panel-body">
+                  <div class="col-md-4"><label for="exampleInputName2">Node : </label><span>{{server.Node.Node}}</span></div>
+                  <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Node.Address}}</span></div>
+                  <div class="col-md-4"><label for="exampleInputName2">Tags : </label><span ng-repeat="tag in server.Service.Tags">{{tag}}<span ng-if="$index<(server.Service.Tags.length-1)"> , </span></span></div>
+                  <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Service.Address}}</span></div>
+                  <div class="col-md-4"><label for="exampleInputName2">Port : </label><span>{{server.Service.Port}}</span></div>
+                </div>
+                <div class="container">
+                <label  ng-if="server.Checks.length>0" style="margin-left:15px" >Checks:</label>
+                <ul ng-if="server.Checks.length>0" >
+                  <li ng-repeat="check in server.Checks">
+                    <div class="row">
+                      <div class="col-md-4"><label for="exampleInputName2">Name : </label><span>{{check.Name}}</span></div>
+                      <div class="col-md-4"><label for="exampleInputName2">CheckID : </label><span>{{check.CheckID}}</span></div>
+                      <div class="col-md-4"><label for="exampleInputName2">Status : </label><span>{{check.Status}}</span></div>
+                    </div>
+                  </li>
+                </ul>
+                </div>
+                
+            </div>
           </div>
         </div>
       </div>
     </div>
+    </div>
   </div>
-</div>
+  
 </div>
 
 <!--Form-->
