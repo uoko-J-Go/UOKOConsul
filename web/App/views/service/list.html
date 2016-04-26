@@ -51,7 +51,12 @@
                   </li>
                 </ul>
                 </div>
-                
+                <div class="panel-footer">
+                  <div class="row" style="padding-right:20px">
+                    <button type="button" class="btn btn-primary pull-right"  ng-click="delService(server.Service.ID)">注销服务</button>
+                  </div>
+                  
+                </div>
             </div>
           </div>
         </div>
@@ -73,34 +78,30 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="exampleInputPassword1">ID</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ID" ng-model="model.ID">
+            <label >ID</label>
+            <input type="text" class="form-control"  placeholder="ID" ng-model="model.ID">
           </div>
           
           <div class="form-group">
-            <label for="exampleInputPassword1">Name</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Name" ng-model="model.Name">
+            <label >Name</label>
+            <input type="text" class="form-control"  placeholder="Name" ng-model="model.Name">
           </div>
           
           <div class="form-group">
-              <label for="exampleInputPassword1">Port</label>
-              <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Port" ng-model="model.Port">
+              <label >Port</label>
+              <input type="number" class="form-control"  placeholder="Port" ng-model="model.Port">
           </div>   
 
             <div class="form-group">
-              <label for="exampleInputEmail1">Address</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Address" ng-model="model.Address">
+              <label >Address</label>
+              <input type="text" class="form-control"  placeholder="Address" ng-model="model.Address">
             </div>
             
             <div class="form-group">
-              <label for="exampleInputEmail1">Tags</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Tags" ng-model="model.Tags">
+              <label >Tags</label>
+              <input type="text" class="form-control"  placeholder="Tags" ng-model="model.Tags">
             </div>
             
-            <div class="form-group">
-              <label for="exampleInputPassword1">Check</label>
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Check" ng-model="model.Check">
-            </div>
             
           
         </div>

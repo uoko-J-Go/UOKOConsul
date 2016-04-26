@@ -26,7 +26,13 @@ define([
                      $scope.healthService=data;
                 }); 
            }
-           
+           $scope.delService=function(id){
+              ServicesService.Delete(id, function (data) {
+                   $scope.GetAll();
+                }, function (data) {
+                  layer.alert(data)
+                }); 
+           }
            $scope.init=function(){
                if($stateParams["dc"]==""){
                    $scope.currDataCenter=$rootScope.dataCenters[0];
@@ -38,11 +44,7 @@ define([
            }
            $scope.init();
           
-          $scope.delServices=function(id){
-              ServicesService.Delete(id, function (data) {
-                   $scope.GetAll();
-                }); 
-           }
+       
           
           
          });
