@@ -74,7 +74,14 @@ define([
         url:'/nodes/:dc',
         templateUrl: 'App/views/nodes/list.html',
         controller:"NodesController"
-    });   
+    }); 
+    
+     $stateProvider.state('configcenter', {
+        url:'/configcenter/:dc',
+        templateUrl: 'App/views/configcenter/index.html',
+        controller:"ConfigCenterController"
+    }); 
+      
     /*路由配置 */   
     }]);
     /**拦截器 */
