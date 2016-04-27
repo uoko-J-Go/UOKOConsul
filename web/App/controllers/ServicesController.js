@@ -29,14 +29,19 @@ define([
                      $scope.healthService=data;
                 }); 
            }
-           $scope.delService=function(id){
+           $scope.delService=function(node,serviceId){
                 layer.confirm("确定要注销该服务？", function (index) {
-                    AgentService.DeregisterService(id, function (data) {
-                        $scope.GetAll();
-                    }, function (data) {
-                        layer.alert(data)
-                    }); 
-            
+                    layer.close(index);
+                    var _params={
+                        Datacenter: $scope.currDataCenter,
+                        Node: node,
+                        ServiceID: serviceId
+                    }
+                    CatalogService.Deregister(_params,function (data) {
+                        if(data){
+                             $scope.GetAll();
+                        }
+                    })
                 });
          
            }
