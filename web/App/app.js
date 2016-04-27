@@ -9,10 +9,9 @@ define([
     var app = angular.module("consulApp", [
         "ngAnimate","ui.router","ui.bootstrap"
     ]);
-    var apiBaseAddress="http://127.0.0.1:8500";
     app.config(['$stateProvider', '$urlRouterProvider','$httpProvider', function($stateProvider, $urlRouterProvider,$httpProvider) {
     /*Http请求处理*/ 
-    $httpProvider.interceptors.push('apiBaseAddressHandler');
+    //$httpProvider.interceptors.push('HttpProviderInterceptor');
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     /**
@@ -79,12 +78,9 @@ define([
     /*路由配置 */   
     }]);
     /**拦截器 */
-     app.factory('apiBaseAddressHandler', function () {
+     app.factory('HttpProviderInterceptor', function () {
         return {
             request: function (config) {
-                if (!/https?:\/\/(.*?)+/.test(config.url)&&config.url.indexOf("v1/") >= 0) {
-                    config.url = apiBaseAddress + config.url;
-                }
                 return config;
             }
         };
