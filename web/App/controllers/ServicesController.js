@@ -14,6 +14,15 @@ define([
             $scope.services=[];
             $scope.ServiceName="";
             $scope.SubmitFrom = function (model) {
+                
+                var tags=model.Service.Tags.split(",");
+                if(tags.length>0){
+                    model.Service.Tags=tags;
+                }
+                else{
+                    model.Service.Tags=[];
+                }
+                
                 AgentService.RegisterService(model, function (data) {
                   $('#myModal').modal('hide')
                 }); 
