@@ -14,7 +14,7 @@ require.config({
         underscore:"../Assets/plugins/underscore/underscore-min",
         bootstrap: "../Assets/plugins/bootstrap/js/bootstrap.min",
         layer: "../Assets/plugins/layer/layer",
-
+        ztree:"../Assets/plugins/ztree/js/jquery.ztree.all.min",
         //js
         consulApp: "app",
         common: "../Assets/js/common",
@@ -34,12 +34,12 @@ require.config({
         "underscore": ["jquery"],
         "bootstrap": ["jquery"],
         "layer": ["jquery"],
-        "common": ["jquery"],
+        "common": ["jquery"]
     },
     priority: [
         "angular", "jquery"
     ],
-    //urlArgs: "v=" + (new Date()).getTime()  开发阶段不使用  方便调试
+    //urlArgs: "v=" + (new Date()).getTime()  //开发阶段不使用  方便调试
 });
 
 

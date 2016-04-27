@@ -13,3 +13,11 @@ footer{
 ul{
   list-style:none;
   }
+  
+.border-left {
+    border-left: 1px #E6E6E6 solid;
+}
+textarea{
+  width: 100%;
+  border: 1px #E6E6E6 solid;
+}

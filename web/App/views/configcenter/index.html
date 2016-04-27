@@ -1,3 +1,32 @@
 ﻿
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">配置中心</div>
+  <div class="panel-body">
+      <div class="row configcontainer">
+          <div class="col-md-4 ztreecontainer">
+              <ul configtree></ul>
+           </div>
+          <div class="col-md-8 border-left kvdetail">
+              <div class="panel panel-default" ng-show="currKV!=null">
+                <div class="panel-heading"><h3>{{currKV.Key}}</h3></div>
+                <div class="panel-body">
+                    <div class="row ">
+                    <textarea ng-model="currKV.Value" rows="5" ></textarea>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row" style="padding-right:20px">
+                        <button type="button" class="btn btn-default pull-right"  >取消</button>
+                        <button type="button" class="btn btn-primary pull-right" style="margin-right:20px;" >删除</button>  
+                        <button type="button" class="btn btn-primary pull-right" style="margin-right:20px;">更新</button>   
+                    </div>
+                </div>
+             </div>
+           </div>
+           
+      </div>
+  </div>
+</div>
 
-<h1>配置中心</h1>
+

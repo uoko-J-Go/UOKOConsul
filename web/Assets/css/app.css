@@ -1,0 +1,7 @@
+.configcontainer{
+    height: 720px
+}
+.configcontainer .kvdetail,.configcontainer .ztreecontainer{
+    height: 100%
+}
+ul.ztree {border: 1px solid #E6E6E6;background: #f0f6e4;width:100%;height:100%;overflow-y:scroll;overflow-x:auto;}
