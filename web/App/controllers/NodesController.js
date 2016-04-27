@@ -1,30 +1,32 @@
 define([
     
     'consulApp',
-    'services/nodesservice'
+    'services/catalogservice',
+    'services/healthcheckservice',
+    'services/uiservice'
     ],function(consulApp){
       
 
- consulApp.controller('NodesController', function ($scope,$rootScope,$http,$state,$stateParams,NodesService) {
+ consulApp.controller('NodesController', function ($scope,$rootScope,$state,$stateParams,UiService,CatalogService,HealthCheckService) {
             $rootScope.headTitle= "节点列表";
             $scope.services=[]
 
            $scope.GetAll = function () {
-                NodesService.GetAll($scope.currDataCenter,function (data) {
+                UiService.GetAllNodes($scope.currDataCenter,function (data) {
 
                      $scope.items=data
                 }); 
            };
            
            $scope.getHealthNode=function(name){
-              NodesService.GetInfoByName($scope.currDataCenter,name,function (data) {
+              UiService.GetNodeInfoByName($scope.currDataCenter,name,function (data) {
                      $scope.healthService=data;
                 }); 
            }
            
            $scope.init=function(){
                if($stateParams["dc"]==""){
-                   $scope.currDataCenter=$rootScope.dataCenters[0];
+                   $scope.currDataCenter=$rootScope.CurrAgent.Config.Datacenter;
                }
                else{
                     $scope.currDataCenter=$stateParams["dc"];
