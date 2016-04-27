@@ -77,28 +77,50 @@
           <h4 class="modal-title" id="myModalLabel">服务注册</h4>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label >ID</label>
-            <input type="text" class="form-control"  placeholder="ID" ng-model="model.ID">
-          </div>
           
-          <div class="form-group">
-            <label >Name</label>
-            <input type="text" class="form-control"  placeholder="Name" ng-model="model.Name">
-          </div>
+            <div class="form-group">
+              <label >Datacenter</label>
+              <input type="text" class="form-control"  placeholder="Datacenter" ng-model="model.Datacenter">
+            </div>
+            
+            <div class="form-group">
+              <label >Node</label>
+              <input type="text" class="form-control"  placeholder="Node" ng-model="model.Node">
+            </div>
+            
             <div class="form-group">
               <label >Address</label>
               <input type="text" class="form-control"  placeholder="Address" ng-model="model.Address">
             </div>
+          
+            <div class="bs-example bs-example-bg-classes" data-example-id="contextual-backgrounds-helpers">
+              <p class="bg-primary">Service</p>
+            </div>
+           
+           
+            <div class="form-group">
+              <label >ID</label>
+              <input type="text" class="form-control"  placeholder="ID" ng-model="model.Service.ID">
+            </div>
+            
+            <div class="form-group">
+              <label >Service</label>
+              <input type="text" class="form-control"  placeholder="Name" ng-model="model.Service.Service">
+            </div>
+          
+            <div class="form-group">
+              <label >Address</label>
+              <input type="text" class="form-control"  placeholder="Address" ng-model="model.Service.Address">
+            </div>
             
              <div class="form-group">
               <label >Port</label>
-              <input type="number" class="form-control"  placeholder="Port" ng-model="model.Port">
+              <input type="number" class="form-control"  placeholder="Port" ng-model="model.Service.Port">
              </div> 
           
             <div class="form-group">
               <label >Tags</label>
-              <input type="text" class="form-control"  placeholder="Tags" ng-model="model.Tags">
+              <input type="text" class="form-control"  placeholder='逗号,隔开' ng-model="model.Service.Tags">
             </div>
             
             

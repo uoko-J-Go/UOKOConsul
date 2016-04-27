@@ -9,7 +9,8 @@ define([
 
  consulApp.controller('NodesController', function ($scope,$rootScope,$state,$stateParams,UiService,CatalogService,HealthCheckService) {
             $rootScope.headTitle= "节点列表";
-            $scope.services=[]
+            $scope.services=[];
+            $scope.NodeName="";
 
            $scope.GetAll = function () {
                 UiService.GetAllNodes($scope.currDataCenter,function (data) {
@@ -19,9 +20,12 @@ define([
            };
            
            $scope.getHealthNode=function(name){
-              UiService.GetNodeInfoByName($scope.currDataCenter,name,function (data) {
+              if($scope.NodeName!=name){
+                UiService.GetNodeInfoByName($scope.currDataCenter,name,function (data) {
                      $scope.healthService=data;
                 }); 
+              }
+               $scope.NodeName=name;
            }
            
            $scope.init=function(){

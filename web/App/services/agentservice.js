@@ -19,7 +19,7 @@ define([
         };
         
          this.RegisterService = function (model, successCallBack, failedCallBack) {
-            $http.put("/v1/agent/service/register", JSON.stringify(model)).success(function (data) {
+            $http.put("/v1/catalog/register", JSON.stringify(model)).success(function (data) {
                 if (successCallBack != undefined) {
                     successCallBack(data);
                 }
@@ -31,7 +31,7 @@ define([
         };
         
         this.DeregisterService = function (id, successCallBack, failedCallBack) {
-            $http.post("/v1/agent/service/deregister/"+id+"").success(function (data) {
+            $http.put("/v1/agent/service/deregister/"+id+"").success(function (data) {
                 if (successCallBack != undefined) {
                     successCallBack(data);
                 }

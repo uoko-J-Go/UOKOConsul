@@ -6,10 +6,12 @@
   </div>
   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default" ng-repeat="item in items">
-     <div id="myAlert" class="alert alert-primary" >
-         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Node}}" aria-expanded="true" aria-controls="{{item.Node}}" ng-click="getHealthNode(item.Node)">
-        {{item.Node}}
-        </a>
+     <div class="panel-heading">
+         <h4>
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Node}}" aria-expanded="true" aria-controls="{{item.Node}}" ng-click="getHealthNode(item.Node)">
+            {{item.Node}}
+            </a>
+         </h4>
       </div>
     
     <div id="{{item.Node}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
