@@ -55,15 +55,8 @@ define([
            $scope.delService=function(node,serviceId){
                 layer.confirm("确定要注销该服务？", function (index) {
                     layer.close(index);
-                    // var _params={
-                    //     Datacenter: $scope.currDataCenter,
-                    //     Node: node,
-                    //     ServiceID: serviceId
-                    // }
                     CatalogService.Deregister(serviceId,function (data) {
-                       // if(data){
-                             $scope.GetAll();
-                       // }
+                         $scope.GetAll();
                     })
                 });
          
@@ -77,6 +70,7 @@ define([
                }
                $scope.GetAll();
                $scope.GetAllNode();
+               $scope.localNodeName= $rootScope.CurrAgent.Config.NodeName;
            }
            $scope.init();
 
