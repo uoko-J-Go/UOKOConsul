@@ -25,7 +25,9 @@ define([
                     if (Base64.extendString) {
                         Base64.extendString();
                     }
-                    data.Value=data.Value.fromBase64();
+                    if(data.Value){
+                       data.Value=data.Value.fromBase64();  
+                    }       
                 }
                 if (successCallBack != undefined) {
                     successCallBack(data);
