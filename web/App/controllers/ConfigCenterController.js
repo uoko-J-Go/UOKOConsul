@@ -22,9 +22,7 @@ define([
                   $scope.ShowModel=1;
                  var key=_path.trimEnd("/");
                  KVService.GetKV(key,$scope.currDataCenter,function(data){
-                    if(data.length>0){
-                        $scope.editKV=data[0];  
-                    }
+                     $scope.editKV=data;  
                  })
              }
            }
@@ -34,7 +32,7 @@ define([
            
            $scope.AddKeyOrFolder=function(){
                if($scope.IsCreateFoloder){
-                   if(!$scope.CurrParentPath){
+                   if($scope.CurrParentPath==undefined){
                        $scope.CurrParentPath="";
                    }
                    KVService.AddFolder($scope.CurrParentPath+$scope.addKV.Key,$rootScope.CurrAgent.Config.Datacenter,function(data){
@@ -68,8 +66,8 @@ define([
            }
            $scope.UpdateKey=function(){
                 KVService.AddOrUpdateKV($scope.editKV,$rootScope.CurrAgent.Config.Datacenter,function(data){
-                       if(data){
-                           $scope.expand($scope.selectedNode);
+                       if(data=="true"){
+                           layer.alert("更新成功");
                        }
                })
            }

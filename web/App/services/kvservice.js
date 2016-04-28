@@ -1,7 +1,7 @@
 define([
     
-    'consulApp'
-    
+    'consulApp',
+    'base64'
     ],function(consulApp){
       
     consulApp.service("KVService", function ($http) {  
@@ -20,6 +20,13 @@ define([
         }
         this.GetKV = function (key,dc,successCallBack, failedCallBack) {
             $http.get("/v1/kv/"+key+"?dc="+dc).success(function (data) {
+                if(data.length>0){
+                    data=data[0];  
+                    if (Base64.extendString) {
+                        Base64.extendString();
+                    }
+                    data.Value=data.Value.fromBase64();
+                }
                 if (successCallBack != undefined) {
                     successCallBack(data);
                 }

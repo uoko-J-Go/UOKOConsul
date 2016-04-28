@@ -15,6 +15,7 @@ require.config({
         bootstrap: "../Assets/plugins/bootstrap/js/bootstrap.min",
         layer: "../Assets/plugins/layer/layer",
         ztree:"../Assets/plugins/ztree/js/jquery.ztree.all.min",
+        base64:"../Assets/plugins/base64/base64.min",
         //js
         consulApp: "app",
         common: "../Assets/js/common",
