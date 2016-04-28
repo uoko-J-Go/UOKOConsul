@@ -14,23 +14,31 @@ define([
             $scope.services=[];
             $scope.ServiceName="";
             $scope.SubmitFrom = function (model) {
-                
-                var tags=model.Service.Tags.split(",");
+
+                var tags=model.Tags.split(",");
                 if(tags.length>0){
-                    model.Service.Tags=tags;
+                    model.Tags=tags;
                 }
                 else{
-                    model.Service.Tags=[];
+                    model.Tags=[];
                 }
-                
+
                 AgentService.RegisterService(model, function (data) {
-                  $('#myModal').modal('hide')
+                  $scope.GetAll();
+                  $('#myModal').modal('hide');
+                 
                 }); 
            };
            
            $scope.GetAll = function () {
                 UiService.GetAllServices($scope.currDataCenter,function (data) {
                      $scope.items=data
+                }); 
+           };
+           
+           $scope.GetAllNode = function () {
+                CatalogService.GetAllNode(function (data) {
+                     $scope.nodeData=data;
                 }); 
            };
            
@@ -45,15 +53,15 @@ define([
            $scope.delService=function(node,serviceId){
                 layer.confirm("确定要注销该服务？", function (index) {
                     layer.close(index);
-                    var _params={
-                        Datacenter: $scope.currDataCenter,
-                        Node: node,
-                        ServiceID: serviceId
-                    }
-                    CatalogService.Deregister(_params,function (data) {
-                        if(data){
+                    // var _params={
+                    //     Datacenter: $scope.currDataCenter,
+                    //     Node: node,
+                    //     ServiceID: serviceId
+                    // }
+                    CatalogService.Deregister(serviceId,function (data) {
+                       // if(data){
                              $scope.GetAll();
-                        }
+                       // }
                     })
                 });
          
@@ -66,6 +74,7 @@ define([
                     $scope.currDataCenter=$stateParams["dc"];
                }
                $scope.GetAll();
+               $scope.GetAllNode();
            }
            $scope.init();
 

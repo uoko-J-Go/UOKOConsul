@@ -19,22 +19,33 @@
         <div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#services" aria-controls="services" role="tab" data-toggle="tab">Services</a></li>
-                <li role="presentation"><a href="#checks" aria-controls="checks" role="tab" data-toggle="tab">Checks</a></li>
+                <li role="presentation" class="active"><a href="#services{{item.Node}}" aria-controls="services{{item.Node}}" role="tab" data-toggle="tab">Services</a></li>
+                <li role="presentation"><a href="#checks{{item.Node}}" aria-controls="checks{{item.Node}}" role="tab" data-toggle="tab">Checks</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="services" >
-                     <div class="alert alert-success" role="alert" ng-repeat="services in item.Services">
-                         {{services.Service}} <br>
-                        <p class="text-warning">{{services.Tags}}</p>
-                         
-                     </div>
+                <div role="tabpanel" class="tab-pane active" id="services{{item.Node}}" >
+                  
+                  <div class="panel panel-default" ng-repeat="server in item.Services">
+                        <div class="panel-heading">
+                          <h4>
+                          {{server.ID}}
+                          <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'" ></span>
+                          <h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-4"><label for="exampleInputName2">Service : </label><span>{{server.Service}}</span></div>
+                            <div class="col-md-4"><label for="exampleInputName2">Tags : </label><span ng-repeat="tag in server.Tags">{{tag}}<span ng-if="$index<(server.Tags.length-1)"> , </span></span></div>
+                            <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Address}}</span></div>
+                            <div class="col-md-4"><label for="exampleInputName2">Port : </label><span>{{server.Port}}</span></div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div role="tabpanel" class="tab-pane" id="checks">
-                     <div class="alert alert-warning" role="alert" ng-repeat="checks in item.Checks">
+                <div role="tabpanel" class="tab-pane" id="checks{{item.Node}}">
+                  
+                     <!--<div class="alert alert-warning" role="alert" ng-repeat="checks in item.Checks">
                           <div class="panel-body">
                             <div class="col-md-8">
                                 <label for="exampleInputName2"><label class="text-warning"><h3>{{checks.Name}}</h3></label></label>
@@ -42,7 +53,26 @@
                             </div>
                             <div class="col-md-8"><label for="exampleInputName2">Notes : </label><p class="text-warning">{{checks.Notes}}</p></div>
                             <div class="col-md-8"><label for="exampleInputName2">Output : </label><p class="text-warning">{{checks.Output}}</p></div>
-                     </div>
+                     </div>-->
+                     
+                     
+                      <div class="panel panel-default" ng-repeat="checks in item.Checks">
+                        <div class="panel-heading">
+                          <h4>
+                            <label for="exampleInputName2"><label class="text-warning"><h3>{{checks.Name}}</h3></label></label>
+                            <small>{{checks.CheckID}}</small>
+                          <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'" ></span>
+                          <h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-8"><label for="exampleInputName2">Notes : </label><p class="text-warning">{{checks.Notes}}</p></div>
+                            <div class="col-md-8"><label for="exampleInputName2">Output : </label><p class="text-warning">{{checks.Output}}</p></div>
+                            </div>
+                         </div>
+                      </div>
+                     
+                     
+                     
                    </div>
                 </div>
             </div>
