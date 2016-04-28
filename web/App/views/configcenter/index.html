@@ -8,21 +8,47 @@
               <ul configtree></ul>
            </div>
           <div class="col-md-8 border-left kvdetail">
-              <div class="panel panel-default" ng-show="currKV!=null">
-                <div class="panel-heading"><h3>{{currKV.Key}}</h3></div>
+              <!-- 添加面板-->
+              <div class="panel panel-default" ng-show="ShowModel==0">
+                <div class="panel-heading"><h4>添加配置</h4></div>
                 <div class="panel-body">
-                    <div class="row ">
-                    <textarea ng-model="currKV.Value" rows="5" ></textarea>
+                    <div class="row " style="padding:5px 10px">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">/{{CurrParentPath}}</span>
+                            <input type="text" ng-model="addKV.Key"  ng-change="CreateKeyChanged()" class="form-control" placeholder="" aria-describedby="basic-addon1" >
+                        </div>
+                        <div style="padding:10px 5px 5px 10px ">
+                            <span class="msg" >创建目录 则以  /  结尾</span>
+                        </div>
+                    </div>
+                    <div class="row " style="padding:5px 10px" ng-show="!IsCreateFoloder">
+                        <textarea ng-model="addKV.Value" rows="5" ></textarea>
                     </div>
                 </div>
                 <div class="panel-footer">
                     <div class="row" style="padding-right:20px">
-                        <button type="button" class="btn btn-default pull-right"  >取消</button>
-                        <button type="button" class="btn btn-primary pull-right" style="margin-right:20px;" >删除</button>  
-                        <button type="button" class="btn btn-primary pull-right" style="margin-right:20px;">更新</button>   
+                        <button type="button" class="btn btn-danger pull-right" style="margin-right:20px;" ng-click="RemoveFolder()" >删除目录</button>  
+                        <button type="button" class="btn btn-primary pull-right" style="margin-right:20px;" ng-click="AddKeyOrFolder()" ng-disabled="!addKV.Key">添 加</button>                
                     </div>
                 </div>
              </div>
+              <!-- 添加面板-->
+               <!-- 修改面板-->
+              <div class="panel panel-default" ng-show="ShowModel==1">
+                <div class="panel-heading"><h4>{{editKV.Key}}</h4></div>
+                <div class="panel-body">
+                    <div class="row " style="padding:5px 10px">
+                    <textarea ng-model="editKV.Value" rows="5" ></textarea>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row" style="padding-right:20px">
+                        <button type="button" class="btn btn-danger pull-right" style="margin-right:20px;" ng-click="RemoveKey()" >删 除</button>  
+                        <button type="button" class="btn btn-primary pull-right" style="margin-right:20px;" ng-click="UpdateKey()" >更 新</button>    
+                    </div>
+                </div>
+             </div>
+              <!-- 修改面板-->
            </div>
            
       </div>
