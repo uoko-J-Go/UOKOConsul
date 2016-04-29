@@ -31,27 +31,21 @@
                 </div>
                 <div class="panel-body">
                    <div class="row">
-                        <div class="col-md-4"><label for="exampleInputName2">Tags : </label><span ng-repeat="tag in server.Service.Tags">{{tag}}<span ng-if="$index<(server.Service.Tags.length-1)"> , </span></span></div>
-                        <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Service.Address}}</span></div>
+                        <div class="col-md-4"><label for="exampleInputName2">Node : </label><span>{{server.Node.Node}}</span></div>
+                        <div class="col-md-4"><label for="exampleInputName2">Node Address : </label><span>{{server.Node.Address}}</span></div>
+                        
+                        <div class="col-md-4"><label for="exampleInputName2">Service Address : </label><span>{{server.Service.Address}}</span></div>
                         <div class="col-md-4"><label for="exampleInputName2">Port : </label><span>{{server.Service.Port}}</span></div>
+                        <div class="col-md-4"><label for="exampleInputName2">Tags : </label><span ng-repeat="tag in server.Service.Tags">{{tag}}<span ng-if="$index<(server.Service.Tags.length-1)"> , </span></span></div>
+                    
+                       
                     </div>
                     <br/>
 
-                   <div class="container">
-                    <label style="<margin-left:1></margin-left:1>px" >Node:</label>
-                    <ul >
-                      <li >
-                        <div class="row">
-                            <div class="col-md-4"><label for="exampleInputName2">Name : </label><span>{{server.Node.Node}}</span></div>
-                            <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Node.Address}}</span></div>
-                        </div>
-                      </li>
-                    </ul>
-               </div>
               </div>
 
               <div class="container">
-                <label  ng-if="server.Checks.length>0" style="margin-left:15px" >Checks:</label>
+                <label  ng-if="server.Checks.length>0" style="margin-left:0px" >Checks:</label>
                 <ul ng-if="server.Checks.length>0" >
                   <li ng-repeat="check in server.Checks">
                     <div class="row">
