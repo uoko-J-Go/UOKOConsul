@@ -8,9 +8,11 @@ define([
       
 
  consulApp.controller('NodesController', function ($scope,$rootScope,$state,$stateParams,UiService,CatalogService,HealthCheckService) {
+     
             $rootScope.headTitle= "节点列表";
             $scope.services=[];
             $scope.NodeName="";
+            $scope.nodeId=$stateParams.nodeId
 
            $scope.GetAll = function () {
                 UiService.GetAllNodes($scope.currDataCenter,function (data) {

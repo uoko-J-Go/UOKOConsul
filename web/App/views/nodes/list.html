@@ -13,7 +13,7 @@
               </h4>
             </div>
           
-          <div id="{{item.Node}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div id="{{item.Node}}" ng-class="nodeId!=undefined&&nodeId==item.Node? 'panel-collapse collapse in':'panel-collapse collapse'"  role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
                   <!-- Nav tabs -->
                   <ul class="nav nav-tabs" role="tablist">
@@ -33,7 +33,7 @@
                                 <h4>
                               </div>
                               <div class="panel-body">
-                                  <div class="col-md-4"><label >Service : </label><span>{{server.Service}}</span></div>
+                                  <div class="col-md-4"><label >Service : </label><span>  <a ui-sref='gotoserver({serverId:server.Service})'>{{server.Service}}</a></span></div>
                                   <div class="col-md-4"><label >Tags : </label><span ng-repeat="tag in server.Tags">{{tag}}<span ng-if="$index<(server.Tags.length-1)"> , </span></span></div>
                                   <div class="col-md-4"><label >Address : </label><span>{{server.Address}}</span></div>
                                   <div class="col-md-4"><label >Port : </label><span>{{server.Port}}</span></div>

@@ -1,15 +1,30 @@
 <div class="toolbar row" style="padding:10px 15px">
   <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">服务注册</button>
+  
+
+  
+  
 </div>
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
   <div class="panel-heading">
-   服务列表
+   
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">服务列表</button>
+        </span>
+        <input type="text" class="form-control" ng-model="query" placeholder="Search for...">
+      </div>
+    </div>
+   </div>
   </div>
+  
   <div class="panel-body">
     <div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default"  ng-repeat="item in items">
+    <div class="panel panel-default"  ng-repeat="item in items | filter:query">
       <div  class="panel-heading" >
         <h4>
             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Name}}" aria-expanded="true" aria-controls="{{item.Name}}" ng-click="getHealthService(item.Name)">
@@ -19,20 +34,22 @@
         </h4>
         </div>
       
-      <div id="{{item.Name}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div id="{{item.Name}}" ng-class="serverId!=undefined&&serverId==item.Name?'panel-collapse collapse in':'panel-collapse collapse'" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
           <div class="panel-group">
               <div class="panel panel-default" ng-repeat="server in healthService">
                 <div class="panel-heading">
                   <h4>
-                  {{server.Service.ID}}
+                 {{server.Service.ID}}
                   <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'"  ng-bind="server.ChecksCritical>0? server.ChecksCritical +' failing':server.ChecksPassing+' passing'"></span>
                   <h4>
                 </div>
                 <div class="panel-body">
                    <div class="row">
-                        <div class="col-md-4"><label for="exampleInputName2">Node : </label><span>{{server.Node.Node}}</span></div>
-                        <div class="col-md-4"><label for="exampleInputName2">Node Address : </label><span>{{server.Node.Address}}</span></div>
+                        <div class="col-md-4">
+                         <label for="exampleInputName2">Node : </label>
+                         <span><a ui-sref='gotonodes({nodeId:server.Node.Node})'>{{server.Node.Node}}</a></span></div>
+                         <div class="col-md-4"><label for="exampleInputName2">Node Address : </label><span>{{server.Node.Address}}</span></div>
                         
                         <div class="col-md-4"><label for="exampleInputName2">Service Address : </label><span>{{server.Service.Address}}</span></div>
                         <div class="col-md-4"><label for="exampleInputName2">Port : </label><span>{{server.Service.Port}}</span></div>

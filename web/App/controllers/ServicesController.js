@@ -13,6 +13,8 @@ define([
             $rootScope.headTitle= "服务列表";
             $scope.services=[];
             $scope.ServiceName="";
+            $scope.serverId=$stateParams.serverId;
+             
             $scope.SubmitFrom = function (model) {
 
                 if (typeof model.Tags != "undefined") {

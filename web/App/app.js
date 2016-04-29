@@ -70,8 +70,23 @@ define([
             templateUrl: 'App/views/service/list.html',
             controller:"ServicesController"
         });
+     
+      $stateProvider.state('gotoserver', {
+            url:'/services/:dc/:serverId',
+            templateUrl: 'App/views/service/list.html',
+            controller:"ServicesController"
+      });
+           
+        
+        
     $stateProvider.state('nodes', {
         url:'/nodes/:dc',
+        templateUrl: 'App/views/nodes/list.html',
+        controller:"NodesController"
+    }); 
+    
+    $stateProvider.state('gotonodes', {
+        url:'/nodes/:dc/:nodeId',
         templateUrl: 'App/views/nodes/list.html',
         controller:"NodesController"
     }); 
