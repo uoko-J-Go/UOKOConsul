@@ -25,7 +25,7 @@
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="services{{item.Node}}" >
+                <div role="tabpanel" class="tab-pane active" id="services{{item.Node}}" style="padding-top:20px;" >
                   
                   <div class="panel panel-default" ng-repeat="server in item.Services">
                         <div class="panel-heading">
@@ -43,23 +43,14 @@
                     </div>
                 </div>
                 
-                <div role="tabpanel" class="tab-pane" id="checks{{item.Node}}">
+                <div role="tabpanel" class="tab-pane" id="checks{{item.Node}}" style="padding-top:20px;" >
                   
-                     <!--<div class="alert alert-warning" role="alert" ng-repeat="checks in item.Checks">
-                          <div class="panel-body">
-                            <div class="col-md-8">
-                                <label for="exampleInputName2"><label class="text-warning"><h3>{{checks.Name}}</h3></label></label>
-                                <small>{{checks.CheckID}}</small>
-                            </div>
-                            <div class="col-md-8"><label for="exampleInputName2">Notes : </label><p class="text-warning">{{checks.Notes}}</p></div>
-                            <div class="col-md-8"><label for="exampleInputName2">Output : </label><p class="text-warning">{{checks.Output}}</p></div>
-                     </div>-->
                      
                      
                       <div class="panel panel-default" ng-repeat="checks in item.Checks">
                         <div class="panel-heading">
                           <h4>
-                            <label for="exampleInputName2"><label class="text-warning"><h3>{{checks.Name}}</h3></label></label>
+                            <label for="exampleInputName2"><label class="text-warning">{{checks.Name}}</label></label>
                             <small>{{checks.CheckID}}</small>
                           <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'" ></span>
                           <h4>
