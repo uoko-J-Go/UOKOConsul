@@ -48,7 +48,7 @@ define([
                                 }
                             }                    
                         }
-                        for (var i =0; i<data.length; i++) {
+                        for (var i =data.length-1; i>=0; i--) {
                             var _isParent=data[i].endWith("/")
                             var _name=data[i].trimStart(_path).trimEnd("/")
                            if(_name!=undefined&&_name!=""){
