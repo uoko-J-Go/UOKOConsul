@@ -14,6 +14,8 @@ define([
             $scope.services=[];
             $scope.ServiceName="";
             $scope.serverId=$stateParams.serverId;
+            
+          
              
             $scope.SubmitFrom = function (model) {
 
@@ -73,6 +75,10 @@ define([
                $scope.GetAll();
                $scope.GetAllNode();
                $scope.localNodeName= $rootScope.CurrAgent.Config.NodeName;
+              if( $scope.serverId!=undefined){
+                  
+                $scope.getHealthService($scope.serverId);
+              }
            }
            $scope.init();
 
