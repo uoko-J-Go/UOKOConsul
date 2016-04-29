@@ -58,7 +58,7 @@
                 </div>
                 <div class="panel-footer">
                   <div class="row" style="padding-right:20px">
-                    <button type="button" class="btn btn-primary pull-right" ng-if="localNodeName==server.Node.Node"  ng-click="delService(server.Node.Node,server.Service.ID)">注销服务</button>
+                    <button type="button" class="btn btn-primary pull-right" ng-if="localNodeName==server.Node.Node&&server.Service.ID!='consul'"  ng-click="delService(server.Node.Node,server.Service.ID)">注销服务</button>
                   </div>
                   
                 </div>
