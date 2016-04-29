@@ -3,75 +3,74 @@
   <!-- Default panel contents -->
   <div class="panel-heading">节点列表</div>
   <div class="panel-body">
-  </div>
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default" ng-repeat="item in items">
-     <div class="panel-heading">
-         <h4>
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Node}}" aria-expanded="true" aria-controls="{{item.Node}}" ng-click="getHealthNode(item.Node)">
-            {{item.Node}}
-            </a>
-         </h4>
-      </div>
-    
-    <div id="{{item.Node}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        <div>
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#services{{item.Node}}" aria-controls="services{{item.Node}}" role="tab" data-toggle="tab">Services</a></li>
-                <li role="presentation"><a href="#checks{{item.Node}}" aria-controls="checks{{item.Node}}" role="tab" data-toggle="tab">Checks</a></li>
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="services{{item.Node}}" style="padding-top:20px;" >
-                  
-                  <div class="panel panel-default" ng-repeat="server in item.Services">
-                        <div class="panel-heading">
-                          <h4>
-                          {{server.ID}}
-                          <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'" ></span>
-                          <h4>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-4"><label for="exampleInputName2">Service : </label><span>{{server.Service}}</span></div>
-                            <div class="col-md-4"><label for="exampleInputName2">Tags : </label><span ng-repeat="tag in server.Tags">{{tag}}<span ng-if="$index<(server.Tags.length-1)"> , </span></span></div>
-                            <div class="col-md-4"><label for="exampleInputName2">Address : </label><span>{{server.Address}}</span></div>
-                            <div class="col-md-4"><label for="exampleInputName2">Port : </label><span>{{server.Port}}</span></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div role="tabpanel" class="tab-pane" id="checks{{item.Node}}" style="padding-top:20px;" >
-                  
-                     
-                     
-                      <div class="panel panel-default" ng-repeat="checks in item.Checks">
-                        <div class="panel-heading">
-                          <h4>
-                            <label for="exampleInputName2"><label class="text-warning">{{checks.Name}}</label></label>
-                            <small>{{checks.CheckID}}</small>
-                          <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'" ></span>
-                          <h4>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-8"><label for="exampleInputName2">Notes : </label><p class="text-warning">{{checks.Notes}}</p></div>
-                            <div class="col-md-8"><label for="exampleInputName2">Output : </label><p class="text-warning">{{checks.Output}}</p></div>
-                            </div>
-                         </div>
-                      </div>
-                     
-                     
-                     
-                   </div>
-                </div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" ng-repeat="item in items">
+          <div class="panel-heading">
+              <h4>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{item.Node}}" aria-expanded="true" aria-controls="{{item.Node}}" ng-click="getHealthNode(item.Node)">
+                  {{item.Node}}
+                  </a>
+              </h4>
             </div>
+          
+          <div id="{{item.Node}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation" class="active"><a href="#services{{item.Node}}" aria-controls="services{{item.Node}}" role="tab" data-toggle="tab">Services</a></li>
+                      <li role="presentation"><a href="#checks{{item.Node}}" aria-controls="checks{{item.Node}}" role="tab" data-toggle="tab">Checks</a></li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active" id="services{{item.Node}}" style="padding-top:20px;" >
+                        
+                        <div class="panel panel-default" ng-repeat="server in item.Services">
+                              <div class="panel-heading">
+                                <h4>
+                                {{server.ID}}
+                                <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'" ></span>
+                                <h4>
+                              </div>
+                              <div class="panel-body">
+                                  <div class="col-md-4"><label >Service : </label><span>{{server.Service}}</span></div>
+                                  <div class="col-md-4"><label >Tags : </label><span ng-repeat="tag in server.Tags">{{tag}}<span ng-if="$index<(server.Tags.length-1)"> , </span></span></div>
+                                  <div class="col-md-4"><label >Address : </label><span>{{server.Address}}</span></div>
+                                  <div class="col-md-4"><label >Port : </label><span>{{server.Port}}</span></div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div role="tabpanel" class="tab-pane" id="checks{{item.Node}}" style="padding-top:20px;" >
+                        
+                          
+                          
+                            <div class="panel panel-default" ng-repeat="checks in item.Checks">
+                              <div class="panel-heading">
+                                <h4>
+                                  <label ><label class="text-warning">{{checks.Name}}</label></label>
+                                  <small>{{checks.CheckID}}</small>
+                                <span ng-class="server.ChecksCritical>0? 'label pull-right label-warning':'label pull-right label-success'" ></span>
+                                <h4>
+                              </div>
+                              <div class="panel-body">
+                                  <div class="col-md-12"><label >Notes : </label><p class="text-warning">{{checks.Notes}}</p></div>
+                                  <div class="col-md-12"><label >Output : </label><pre class="text-warning">{{checks.Output}}</pre></div>
+                                  </div>
+                              </div>
+                            </div>
+                          
+                          
+                          
+                        </div>
+                      </div>
+                  </div>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
   </div>
-</div>
+
 </div>
 
 
