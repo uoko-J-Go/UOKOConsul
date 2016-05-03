@@ -66,13 +66,13 @@ define([
         });
     
      $stateProvider.state('services', {
-            url:'/services/:dc/:serverId',
+            url:'/services/{dc}/{serverId}',
             templateUrl: 'App/views/service/list.html',
             controller:"ServicesController"
         });
 
     $stateProvider.state('nodes', {
-        url:'/nodes/:dc/:nodeId',
+        url:'/nodes/{dc}/{nodeId}',
         templateUrl: 'App/views/nodes/list.html',
         controller:"NodesController"
     }); 
